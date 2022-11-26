@@ -1,0 +1,4 @@
+*.swap
+.DS_Store
+push_swap_visualizer/
+checker_Mac
