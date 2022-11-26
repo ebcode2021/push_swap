@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 12:32:41 by eunson            #+#    #+#             */
-/*   Updated: 2022/11/26 10:04:37 by eunson           ###   ########.fr       */
+/*   Updated: 2022/11/26 15:50:37 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,29 @@ void	push_deque_b_to_a(t_deque *deque_a, t_deque *deque_b)
 		reverse_rotate(deque_a, 'a');
 }
 
+void	leaks(void)
+{
+	system("leaks push_swap");
+}
+
 int	main(int argc, char *argv[])
 {
-	t_deque	deque_a;
-	t_deque	deque_b;
+	t_deque		deque_a;
+	t_deque		deque_b;
+	t_element	*free_element;
 
+	atexit(leaks);
 	if (argc > 1)
 	{
 		init_deques(&deque_a, &deque_b, argv);
 		push_deque_a_to_b(&deque_a, &deque_b);
 		push_deque_b_to_a(&deque_a, &deque_b);
+		while (deque_a.head)
+		{
+			free_element = deque_a.head;
+			deque_a.head = deque_a.head->next;
+			free(free_element);
+		}
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:02:44 by eunson            #+#    #+#             */
-/*   Updated: 2022/11/26 09:59:14 by eunson           ###   ########.fr       */
+/*   Updated: 2022/11/26 15:50:44 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,23 @@ void	do_operation(char *operation, t_deque *deque_a, t_deque *deque_b)
 		do_operation2(operation, deque_a, deque_b);
 }
 
+void	free_element(t_element *head)
+{
+	t_element	*free_element;
+
+	while (head)
+	{
+		free_element = head;
+		head = head->next;
+		free(free_element);
+	}
+}
+
+void	leaks(void)
+{
+	system("leaks checker");
+}
+
 int	main(int argc, char *argv[])
 {
 	t_deque		deque_a;
@@ -64,6 +81,7 @@ int	main(int argc, char *argv[])
 	t_element	*head;
 	char		*operation;
 
+	atexit(leaks);
 	if (argc > 1)
 	{
 		init_deque(&deque_a, &deque_b, argv);
@@ -76,6 +94,7 @@ int	main(int argc, char *argv[])
 			do_operation(operation, &deque_a, &deque_b);
 			free(operation);
 		}
+		free_element(deque_a.head);
 		if (sort_check(head) && deque_b.total_cnt == 0)
 			ft_putstr_fd("OK\n", 1);
 		else
