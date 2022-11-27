@@ -6,14 +6,14 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 12:34:40 by eunson            #+#    #+#             */
-/*   Updated: 2022/11/26 10:01:38 by eunson           ###   ########.fr       */
+/*   Updated: 2022/11/27 16:03:00 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 void	exit_error(void)
-{	
+{
 	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:02:44 by eunson            #+#    #+#             */
-/*   Updated: 2022/11/26 15:50:44 by eunson           ###   ########.fr       */
+/*   Updated: 2022/11/27 16:03:28 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,6 @@ void	free_element(t_element *head)
 	}
 }
 
-void	leaks(void)
-{
-	system("leaks checker");
-}
-
 int	main(int argc, char *argv[])
 {
 	t_deque		deque_a;
@@ -81,7 +76,6 @@ int	main(int argc, char *argv[])
 	t_element	*head;
 	char		*operation;
 
-	atexit(leaks);
 	if (argc > 1)
 	{
 		init_deque(&deque_a, &deque_b, argv);
