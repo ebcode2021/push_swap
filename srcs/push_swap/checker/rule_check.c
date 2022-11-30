@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:42:55 by eunson            #+#    #+#             */
-/*   Updated: 2022/11/22 16:20:30 by eunson           ###   ########.fr       */
+/*   Updated: 2022/11/30 10:49:42 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	assert_duplicate(t_element *head, int data)
 
 int	sort_check(t_element *element)
 {
-	element = element->next;
+	if (element)
+		element = element->next;
 	while (element)
 	{
 		if (element->data < element->prev->data)

@@ -6,7 +6,7 @@
 /*   By: eunson <eunson@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:02:44 by eunson            #+#    #+#             */
-/*   Updated: 2022/11/27 16:03:28 by eunson           ###   ########.fr       */
+/*   Updated: 2022/11/30 10:55:50 by eunson           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,11 @@ int	main(int argc, char *argv[])
 			do_operation(operation, &deque_a, &deque_b);
 			free(operation);
 		}
-		free_element(deque_a.head);
 		if (sort_check(head) && deque_b.total_cnt == 0)
 			ft_putstr_fd("OK\n", 1);
 		else
 			ft_putstr_fd("KO\n", 1);
+		free_element(deque_a.head);
 	}
 	return (0);
 }
